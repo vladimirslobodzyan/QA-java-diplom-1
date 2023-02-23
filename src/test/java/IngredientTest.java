@@ -6,13 +6,11 @@ import org.junit.runners.Parameterized;
 import org.mockito.MockitoAnnotations;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
-
 import static praktikum.IngredientType.FILLING;
 import static praktikum.IngredientType.SAUCE;
 
 @RunWith(Parameterized.class)
 public class IngredientTest {
-
     private IngredientType type;
     private String name;
     private float price;
@@ -23,12 +21,7 @@ public class IngredientTest {
         this.price = price;
     }
 
-    @Before
-    public void initMockito() {
-        MockitoAnnotations.openMocks(this);
-    }
-
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1} {2}")
     public static Object[][] setIngredient() {
         return new Object[][]{
                 {SAUCE, "hot sauce", 100F},
@@ -38,6 +31,11 @@ public class IngredientTest {
                 {FILLING, "dinosaur", 200F},
                 {FILLING, "sausage", 300F},
         };
+    }
+
+    @Before
+    public void initMockito() {
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test

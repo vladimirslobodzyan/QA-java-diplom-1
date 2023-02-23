@@ -11,8 +11,6 @@ import praktikum.Bun;
 
 @RunWith(Parameterized.class)
 public class BunTest {
-
-
     private String name;
     private float price;
 
@@ -21,19 +19,18 @@ public class BunTest {
         this.price = price;
     }
 
-    @Before
-    public void initMockito() {
-        MockitoAnnotations.openMocks(this);
-    }
-
-
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1}")
     public static Object[][] setBun() {
         return new Object[][]{
                 {"black bun", 100F},
                 {"white bun", 200F},
                 {"red bun", 300F}
         };
+    }
+
+    @Before
+    public void initMockito() {
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
